@@ -1,0 +1,16 @@
+﻿PARENI=1
+PAREND=2
+MAS=3
+MENOS=4
+POR=5
+INT=6
+ENTRE=7
+NEWLINE=8
+WS=9
+'('=1
+')'=2
+'+'=3
+'-'=4
+'*'=5
+'/'=7
+'\n'=8

@@ -1,0 +1,6 @@
+C:\Users\Braulio García R\Documents\GitHub\SistemaInterprete\Practica1\Practica1\obj\Debug\Combined1Lexer.cs
+C:\Users\Braulio García R\Documents\GitHub\SistemaInterprete\Practica1\Practica1\obj\Debug\Combined1Parser.cs
+C:\Users\Braulio García R\Documents\GitHub\SistemaInterprete\Practica1\Practica1\obj\Debug\Combined1Listener.cs
+C:\Users\Braulio García R\Documents\GitHub\SistemaInterprete\Practica1\Practica1\obj\Debug\Combined1BaseListener.cs
+C:\Users\Braulio García R\Documents\GitHub\SistemaInterprete\Practica1\Practica1\obj\Debug\Combined1Visitor.cs
+C:\Users\Braulio García R\Documents\GitHub\SistemaInterprete\Practica1\Practica1\obj\Debug\Combined1BaseVisitor.cs
