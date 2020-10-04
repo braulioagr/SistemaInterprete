@@ -1,5 +1,4 @@
 ﻿using Antlr4.Runtime;
-using Practica3;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Practica4
+namespace Practica5
 {
     class Ensamblador
     {
+
 
         #region Variables de Instancia
         private long cp;
@@ -22,9 +22,9 @@ namespace Practica4
         private List<string> archivo;
         private List<string> errores;
         private Dictionary<string, long> tabSim;
-        SicEstandarLexer lexer;
+        SICEstandarLexer lexer;
         CommonTokenStream tokens;
-        SicEstandarParser parser;
+        SICEstandarParser parser;
         #endregion
 
         #region Constructores
@@ -44,7 +44,7 @@ namespace Practica4
         }
         public string[] CodOp
         {
-            get{ return this.codOp; }
+            get { return this.codOp; }
         }
         public string[] Directivas
         {
@@ -75,14 +75,14 @@ namespace Practica4
         {
             string[] codigo;
             MyErrorListener errorListener;
-            lexer = new SicEstandarLexer(new AntlrInputStream(this.Archivo[i]));
+            lexer = new SICEstandarLexer(new AntlrInputStream(this.Archivo[i]));
             tokens = new CommonTokenStream(lexer);
-            parser = new SicEstandarParser(tokens);
+            parser = new SICEstandarParser(tokens);
             errorListener = new MyErrorListener(i + 1);
             parser.AddErrorListener(errorListener);
             parser.prog();
             codigo = this.Archivo[i].Split('\t');
-            if(!errorListener.ExisteError)
+            if (!errorListener.ExisteError)
             {
                 try
                 {
@@ -178,18 +178,18 @@ namespace Practica4
                 {
                     if (this.codOp.Contains(codigo[1]) || this.Directivas.Contains(codigo[1]) || codigo[1].Equals("WORD"))
                     {
-                        if(this.codOp.Contains(codigo[0]) || this.Directivas.Contains(codigo[0]) || codigo[0].Equals("WORD"))
+                        if (this.codOp.Contains(codigo[0]) || this.Directivas.Contains(codigo[0]) || codigo[0].Equals("WORD"))
                         {
                             this.errores.Add("Linea" + (i + 1).ToString() + ": Error de sintaxis la etiqueta no puede ser la palabra reservada \"" + codigo[0] + "\"");
                         }
                         else
                         {
-                            this.errores.Add("Linea" + (i + 1).ToString() + ": Error de sintaxis el operando: \"" + codigo[2]+ "\" Esta mal escrito");
+                            this.errores.Add("Linea" + (i + 1).ToString() + ": Error de sintaxis el operando: \"" + codigo[2] + "\" Esta mal escrito");
                         }
                     }
                     else
                     {
-                        this.errores.Add("Linea" + (i + 1).ToString() + ": Error instruccion \"" + codigo[1]+ "\" no existe");
+                        this.errores.Add("Linea" + (i + 1).ToString() + ": Error instruccion \"" + codigo[1] + "\" no existe");
                     }
                 }
                 else
@@ -199,6 +199,7 @@ namespace Practica4
             }
         }
         #endregion
+
 
     }
 }

@@ -1,6 +1,4 @@
-﻿using Antlr4.Runtime;
-using Practica3;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Practica4
+namespace Practica5
 {
     public partial class SistemaInterprete : Form
     {
@@ -38,7 +36,7 @@ namespace Practica4
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             string[] codigo;
-            switch(e.ClickedItem.AccessibleName)
+            switch (e.ClickedItem.AccessibleName)
             {
                 case "Abrir":
                     #region Abrir
@@ -61,7 +59,7 @@ namespace Practica4
                         }
                     }
                     #endregion
-                break;
+                    break;
                 case "Analizar":
                     #region Analizar
                     if (this.ensamblador != null)
@@ -69,13 +67,13 @@ namespace Practica4
                         this.dataGridViewIntermedio.Rows.Clear();
                         for (int i = 0; i < this.ensamblador.Archivo.Count; i++)
                         {
-                            this.ensamblador.compila(this.dataGridViewIntermedio,i);
+                            this.ensamblador.compila(this.dataGridViewIntermedio, i);
                         }
                         this.llenaTabSimYErrores();
-                        MetodosAuxiliares.grabaTabSim(this.ensamblador.Nombre,this.ensamblador.TabSim);
+                        MetodosAuxiliares.grabaTabSim(this.ensamblador.Nombre, this.ensamblador.TabSim);
                         if (this.ensamblador.Errores.Count != 0)
                         {
-                            MetodosAuxiliares.grabaErrores(this.ensamblador.Nombre,this.ensamblador.Errores);
+                            MetodosAuxiliares.grabaErrores(this.ensamblador.Nombre, this.ensamblador.Errores);
                         }
                     }
                     #endregion
@@ -91,7 +89,7 @@ namespace Practica4
             this.dataGridViewTabSim.Rows.Clear();
             foreach (var simbolo in this.ensamblador.TabSim)
             {
-                this.dataGridViewTabSim.Rows.Add(simbolo.Key,MetodosAuxiliares.convierteHexadecimal(simbolo.Value));
+                this.dataGridViewTabSim.Rows.Add(simbolo.Key, MetodosAuxiliares.convierteHexadecimal(simbolo.Value));
             }
             this.richTextBoxErrores.Text = "";
             if (this.ensamblador.Errores.Count != 0)
