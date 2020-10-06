@@ -9,7 +9,7 @@ using Antlr4.Runtime.Misc;
 
 namespace Practica4
 {
-    class MyErrorListener: BaseErrorListener
+    class MyErrorListener : BaseErrorListener
     {
         int id;
         private bool existeError;

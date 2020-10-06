@@ -45,7 +45,7 @@ namespace Practica3
             }
         }
 
-        public static void grabaTabSim(string nombre, Dictionary<string,long> tabSim)
+        public static void grabaTabSim(string nombre, Dictionary<string,long> tabSim, long tamaño)
         {
             string ruta;
             StreamWriter writer;
@@ -58,8 +58,36 @@ namespace Practica3
                 {
                     writer.WriteLine(simbolo.Key+"\t"+MetodosAuxiliares.convierteHexadecimal(simbolo.Value));
                 }
+                writer.WriteLine("________________________________");
+                writer.WriteLine("Tamaño del archivo: "+MetodosAuxiliares.convierteHexadecimal(tamaño));
             }
         }
+
+        public static long calculaTamaño(string first, string last)
+        {
+            long inicio;
+            long final;
+            inicio = MetodosAuxiliares.convierteDecimal(first.Split('\t').First());
+            final = MetodosAuxiliares.convierteDecimal(last.Split('\t').First());
+            return final-inicio;
+        }
+
+        public static void grabaIntermedio(string nombre, List<string> intermedio)
+        {
+            string ruta;
+            StreamWriter writer;
+            ruta = Path.GetDirectoryName(nombre);
+            nombre = Path.GetFileNameWithoutExtension(nombre);
+            using (writer = new StreamWriter(new FileStream(ruta + @"\" + nombre + ".loc", FileMode.Create)))
+            {
+                writer.WriteLine("CP\tEtiqueta\tSimbolo\tDireccion");
+                foreach (string linea in intermedio)
+                {
+                    writer.WriteLine(linea);
+                }
+            }
+        }
+
         #endregion
 
         #region Conversiones
@@ -132,5 +160,6 @@ namespace Practica3
         }
         
         #endregion
+    
     }
 }

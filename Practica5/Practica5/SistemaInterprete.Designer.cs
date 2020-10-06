@@ -33,6 +33,8 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.richTextBoxObj = new System.Windows.Forms.RichTextBox();
@@ -55,6 +57,8 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileProgram = new System.Windows.Forms.OpenFileDialog();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -69,12 +73,15 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripSeparator1,
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.toolStripSeparator2,
+            this.toolStripButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1104, 37);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // toolStripButton1
             // 
@@ -103,6 +110,21 @@
             this.toolStripButton2.Size = new System.Drawing.Size(34, 34);
             this.toolStripButton2.Text = "Analiza Programa";
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 37);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(34, 34);
+            this.toolStripButton3.Text = "toolStripButton3";
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label2);
@@ -129,6 +151,7 @@
             // 
             this.richTextBoxObj.Location = new System.Drawing.Point(6, 32);
             this.richTextBoxObj.Name = "richTextBoxObj";
+            this.richTextBoxObj.ReadOnly = true;
             this.richTextBoxObj.Size = new System.Drawing.Size(360, 189);
             this.richTextBoxObj.TabIndex = 2;
             this.richTextBoxObj.Text = "";
@@ -144,8 +167,10 @@
             // 
             // richTextBoxErrores
             // 
+            this.richTextBoxErrores.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.richTextBoxErrores.Location = new System.Drawing.Point(371, 32);
             this.richTextBoxErrores.Name = "richTextBoxErrores";
+            this.richTextBoxErrores.ReadOnly = true;
             this.richTextBoxErrores.Size = new System.Drawing.Size(360, 189);
             this.richTextBoxErrores.TabIndex = 0;
             this.richTextBoxErrores.Text = "";
@@ -198,7 +223,9 @@
             this.Column2,
             this.Column3,
             this.Column4,
-            this.Column5});
+            this.Column5,
+            this.Column12,
+            this.Column13});
             this.dataGridViewIntermedio.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewIntermedio.Name = "dataGridViewIntermedio";
             this.dataGridViewIntermedio.RowHeadersVisible = false;
@@ -293,7 +320,19 @@
             // openFileProgram
             // 
             this.openFileProgram.FileName = "openFileProgram";
-            this.openFileProgram.Filter = "\"(*.s) | *.s\"";
+            this.openFileProgram.Filter = "(*.s) | *.s";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Error";
+            this.Column12.Name = "Column12";
+            this.Column12.Width = 54;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Codigo Obj";
+            this.Column13.Name = "Column13";
+            this.Column13.Width = 84;
             // 
             // SistemaInterprete
             // 
@@ -306,6 +345,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "SistemaInterprete";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -348,6 +388,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.OpenFileDialog openFileProgram;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
     }
 }
 

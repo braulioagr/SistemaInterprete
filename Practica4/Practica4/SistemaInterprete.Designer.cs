@@ -51,10 +51,11 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.richTextBoxObj = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.richTextBoxErrores = new System.Windows.Forms.RichTextBox();
-            this.richTextBoxObj = new System.Windows.Forms.RichTextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIntermedio)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -120,7 +121,8 @@
             this.Column2,
             this.Column3,
             this.Column4,
-            this.Column5});
+            this.Column5,
+            this.Column12});
             this.dataGridViewIntermedio.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewIntermedio.Name = "dataGridViewIntermedio";
             this.dataGridViewIntermedio.RowHeadersVisible = false;
@@ -261,6 +263,24 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Resultados";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Archivo Obj";
+            // 
+            // richTextBoxObj
+            // 
+            this.richTextBoxObj.Location = new System.Drawing.Point(6, 32);
+            this.richTextBoxObj.Name = "richTextBoxObj";
+            this.richTextBoxObj.ReadOnly = true;
+            this.richTextBoxObj.Size = new System.Drawing.Size(360, 189);
+            this.richTextBoxObj.TabIndex = 2;
+            this.richTextBoxObj.Text = "";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -272,6 +292,7 @@
             // 
             // richTextBoxErrores
             // 
+            this.richTextBoxErrores.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.richTextBoxErrores.Location = new System.Drawing.Point(371, 32);
             this.richTextBoxErrores.Name = "richTextBoxErrores";
             this.richTextBoxErrores.ReadOnly = true;
@@ -279,25 +300,13 @@
             this.richTextBoxErrores.TabIndex = 0;
             this.richTextBoxErrores.Text = "";
             // 
-            // richTextBoxObj
+            // Column12
             // 
-            this.richTextBoxObj.Location = new System.Drawing.Point(6, 32);
-            this.richTextBoxObj.Name = "richTextBoxObj";
-            this.richTextBoxObj.ReadOnly = true;
-            this.richTextBoxObj.Size = new System.Drawing.Size(360, 189);
-            this.richTextBoxObj.TabIndex = 2;
-            this.richTextBoxObj.Text = "";
+            this.Column12.HeaderText = "Error";
+            this.Column12.Name = "Column12";
+            this.Column12.Width = 54;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Archivo Obj";
-            // 
-            // Form1
+            // SistemaInterprete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -306,7 +315,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
-            this.Name = "Form1";
+            this.Name = "SistemaInterprete";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
@@ -351,6 +360,7 @@
         private System.Windows.Forms.RichTextBox richTextBoxErrores;
         private System.Windows.Forms.RichTextBox richTextBoxObj;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
     }
 }
 

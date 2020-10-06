@@ -28,6 +28,7 @@ namespace Practica4
         private void Form1_Load(object sender, EventArgs e)
         {
             this.openFileProgram.InitialDirectory = Environment.CurrentDirectory;
+            this.richTextBoxErrores.ForeColor = Color.Green;
             dataGridViewFuente.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewIntermedio.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewTabSim.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -71,8 +72,10 @@ namespace Practica4
                         {
                             this.ensamblador.compila(this.dataGridViewIntermedio,i);
                         }
+                        this.ensamblador.Tamaño = MetodosAuxiliares.calculaTamaño(this.ensamblador.Intermedio.First(), this.ensamblador.Intermedio.Last());
                         this.llenaTabSimYErrores();
-                        MetodosAuxiliares.grabaTabSim(this.ensamblador.Nombre,this.ensamblador.TabSim);
+                        MetodosAuxiliares.grabaTabSim(this.ensamblador.Nombre,this.ensamblador.TabSim,this.ensamblador.Tamaño);
+                        MetodosAuxiliares.grabaIntermedio(this.ensamblador.Nombre, this.ensamblador.Intermedio);
                         if (this.ensamblador.Errores.Count != 0)
                         {
                             MetodosAuxiliares.grabaErrores(this.ensamblador.Nombre,this.ensamblador.Errores);
@@ -101,6 +104,7 @@ namespace Practica4
                     this.richTextBoxErrores.Text += error + "\n";
                 }
             }
+            this.richTextBoxObj.Text = "Tamaño del archivo: " + MetodosAuxiliares.convierteHexadecimal(this.ensamblador.Tamaño)+ "\n________________________________";
         }
 
         private void limpiaDataGrids()

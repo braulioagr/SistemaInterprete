@@ -26,6 +26,7 @@ namespace Practica5
         private void Form1_Load(object sender, EventArgs e)
         {
             this.openFileProgram.InitialDirectory = Environment.CurrentDirectory;
+            this.richTextBoxErrores.ForeColor = Color.Green;
             dataGridViewFuente.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewIntermedio.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewTabSim.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;

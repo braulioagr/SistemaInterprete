@@ -8,48 +8,81 @@ using System.Windows.Forms;
 
 namespace Practica5
 {
-    class Ensamblador
+    public class Ensamblador
     {
 
 
         #region Variables de Instancia
         private long cp;
         private string nombre;
-        private string[] codOp = {"ADD", "AND", "COMP", "DIV", "J", "JEQ", "JGT", "JLT", "JSUB",
-                          "LDA", "LDCH", "LDL", "LDX", "MUL", "OR", "RD", "STA", "STCH",
-                          "STL", "STSW", "STX", "SUB", "TD", "TIX", "WD", "RSUB"};
         private string[] directiva = { "BYTE", "RESW", "RESB" };
         private List<string> archivo;
         private List<string> errores;
         private Dictionary<string, long> tabSim;
+        private Dictionary<string, string> instrucciones;
         SICEstandarLexer lexer;
         CommonTokenStream tokens;
         SICEstandarParser parser;
         #endregion
 
         #region Constructores
+
         public Ensamblador(string nombre)
         {
             this.nombre = nombre;
-            this.archivo = MetodosAuxiliares.leeArchivo(nombre);
+            this.instrucciones = new Dictionary<string, string>();
             this.errores = new List<string>();
             this.tabSim = new Dictionary<string, long>();
+            this.archivo = MetodosAuxiliares.leeArchivo(nombre);
+            #region Agregamos Instrucciones
+            this.instrucciones.Add("ADD", "18");
+            this.instrucciones.Add("AND", "40");
+            this.instrucciones.Add("COMP", "28");
+            this.instrucciones.Add("DIV", "24");
+            this.instrucciones.Add("J", "3C");
+            this.instrucciones.Add("JEQ", "30");
+            this.instrucciones.Add("JGT", "34");
+            this.instrucciones.Add("JLT", "38");
+            this.instrucciones.Add("JSUB", "48");
+            this.instrucciones.Add("LDA", "00");
+            this.instrucciones.Add("LDCH", "50");
+            this.instrucciones.Add("LDL", "08");
+            this.instrucciones.Add("LDX", "04");
+            this.instrucciones.Add("MUL", "20");
+            this.instrucciones.Add("OR", "44");
+            this.instrucciones.Add("RD", "D8");
+            this.instrucciones.Add("RSUB", "4C");
+            this.instrucciones.Add("STA", "0C");
+            this.instrucciones.Add("STCH", "54");
+            this.instrucciones.Add("STL", "14");
+            this.instrucciones.Add("STSW", "E8");
+            this.instrucciones.Add("STX", "10");
+            this.instrucciones.Add("SUB", "1C");
+            this.instrucciones.Add("TD", "E0");
+            this.instrucciones.Add("TIX", "2C");
+            this.instrucciones.Add("WD", "DC");
+            #endregion
         }
+
         #endregion
 
         #region Gets & Sets
+
         public string Nombre
         {
             get { return this.nombre; }
         }
-        public string[] CodOp
+        
+        public Dictionary<string,string> Instrucciones
         {
-            get { return this.codOp; }
+            get { return this.instrucciones; }
         }
+        
         public string[] Directivas
         {
             get { return this.directiva; }
         }
+        
         public long CP
         {
             get { return this.cp; }
@@ -60,17 +93,21 @@ namespace Practica5
         {
             get { return this.archivo; }
         }
+        
         public List<string> Errores
         {
             get { return this.errores; }
         }
+        
         public Dictionary<string, long> TabSim
         {
             get { return this.tabSim; }
         }
+        
         #endregion
 
         #region Metodos
+
         public void compila(DataGridView dataGridViewIntermedio, int i)
         {
             string[] codigo;
@@ -88,23 +125,16 @@ namespace Practica5
                 {
                     if (!codigo[1].Equals("START") && !codigo[1].Equals("END"))
                     {
-                        if (codigo.Length == 3)
-                        {
-                            dataGridViewIntermedio.Rows.Add(i + 1, MetodosAuxiliares.convierteHexadecimal(this.cp), codigo[0], codigo[1], codigo[2]);
-                        }
-                        else if (codigo.Length == 2)
-                        {
-                            dataGridViewIntermedio.Rows.Add(i + 1, MetodosAuxiliares.convierteHexadecimal(this.cp), codigo[0], codigo[1], "");
-                        }
+                        this.llenaDataGrid(dataGridViewIntermedio, codigo, i, "No");
                         if (!string.IsNullOrEmpty(codigo[0]))
                         {
                             this.TabSim.Add(codigo[0], this.cp);
                         }
-                        if (this.codOp.Contains(codigo[1]) || codigo[1].Equals("WORD"))
+                        if (this.instrucciones.Keys.Contains(codigo[1]) || codigo[1].Equals("WORD"))
                         {
                             this.cp += 3;
                         }
-                        else if (this.codOp.Contains(codigo[1]))
+                        else if (this.instrucciones.Keys.Contains(codigo[1]))
                         {
                             codigo[2] = codigo[2].ToUpper();
                             switch (codigo[1])
@@ -118,10 +148,10 @@ namespace Practica5
                                     {
                                         cp += codigo[2].Length - 3;
                                     }
-                                    break;
+                                break;
                                 case "RESW":
                                     cp += 3 * long.Parse(codigo[2]);
-                                    break;
+                                break;
                                 case "RESB":
                                     codigo[2] = codigo[2].ToUpper();
                                     if (codigo[2].Contains("H"))
@@ -132,8 +162,7 @@ namespace Practica5
                                     {
                                         cp += long.Parse(codigo[2]);
                                     }
-                                    break;
-
+                                break;
                             }
                         }
 
@@ -144,60 +173,65 @@ namespace Practica5
                         if (codigo[2].Contains("H"))
                         {
                             this.cp = MetodosAuxiliares.convierteDecimal(codigo[2].Replace("H", ""));
-                            if (codigo.Length == 3)
-                            {
-                                dataGridViewIntermedio.Rows.Add(i + 1, MetodosAuxiliares.convierteHexadecimal(this.cp), codigo[0], codigo[1], codigo[2]);
-                            }
-                            else if (codigo.Length == 2)
-                            {
-                                dataGridViewIntermedio.Rows.Add(i + 1, MetodosAuxiliares.convierteHexadecimal(this.cp), codigo[0], codigo[1], "");
-                            }
+                            this.llenaDataGrid(dataGridViewIntermedio, codigo, i, "No");
                         }
                         else
                         {
                             this.cp = long.Parse(codigo[2]);
-                            if (codigo.Length == 3)
-                            {
-                                dataGridViewIntermedio.Rows.Add(i + 1, MetodosAuxiliares.convierteHexadecimal(this.cp), codigo[0], codigo[1], codigo[2]);
-                            }
-                            else if (codigo.Length == 2)
-                            {
-                                dataGridViewIntermedio.Rows.Add(i + 1, MetodosAuxiliares.convierteHexadecimal(this.cp), codigo[0], codigo[1], "");
-                            }
+                            this.llenaDataGrid(dataGridViewIntermedio, codigo, i, "no");
                         }
                     }
                 }
                 catch (ArgumentException)
                 {
                     this.errores.Add("Linea" + (i + 1).ToString() + ": Error Simbolo repetido");
+                    dataGridViewIntermedio.Rows.Remove(dataGridViewIntermedio.Rows[dataGridViewIntermedio.Rows.Count - 1]);
+                    this.llenaDataGrid(dataGridViewIntermedio, codigo, i, "Simbolo");
                 }
             }
             else
             {
                 if (!string.IsNullOrEmpty(this.Archivo[i]))
                 {
-                    if (this.codOp.Contains(codigo[1]) || this.Directivas.Contains(codigo[1]) || codigo[1].Equals("WORD"))
+                    if (this.instrucciones.Keys.Contains(codigo[1]) || this.Directivas.Contains(codigo[1]) || codigo[1].Equals("WORD"))
                     {
-                        if (this.codOp.Contains(codigo[0]) || this.Directivas.Contains(codigo[0]) || codigo[0].Equals("WORD"))
+                        if (this.instrucciones.Keys.Contains(codigo[0]) || this.Directivas.Contains(codigo[0]) || codigo[0].Equals("WORD"))
                         {
                             this.errores.Add("Linea" + (i + 1).ToString() + ": Error de sintaxis la etiqueta no puede ser la palabra reservada \"" + codigo[0] + "\"");
+                            this.llenaDataGrid(dataGridViewIntermedio, codigo, i, "Syntax");
                         }
                         else
                         {
                             this.errores.Add("Linea" + (i + 1).ToString() + ": Error de sintaxis el operando: \"" + codigo[2] + "\" Esta mal escrito");
+                            this.llenaDataGrid(dataGridViewIntermedio, codigo, i, "Syntax");
                         }
                     }
                     else
                     {
                         this.errores.Add("Linea" + (i + 1).ToString() + ": Error instruccion \"" + codigo[1] + "\" no existe");
+                        this.llenaDataGrid(dataGridViewIntermedio, codigo, i, "Instruccion");
                     }
                 }
                 else
                 {
                     this.errores.Add("Linea" + (i + 1).ToString() + ": Error de sintaxis no debe haber lineas vacias");
+                    //this.llenaDataGrid(dataGridViewIntermedio, codigo, i, "Vacia");
                 }
             }
         }
+
+        private void llenaDataGrid(DataGridView dataGridViewIntermedio, string[] codigo, int i, string error)
+        {
+            if (codigo.Length == 3)
+            {
+                dataGridViewIntermedio.Rows.Add(i + 1, MetodosAuxiliares.convierteHexadecimal(this.cp), codigo[0], codigo[1], codigo[2], error);
+            }
+            else if (codigo.Length == 2)
+            {
+                dataGridViewIntermedio.Rows.Add(i + 1, MetodosAuxiliares.convierteHexadecimal(this.cp), codigo[0], codigo[1], "", error);
+            }
+        }
+
         #endregion
 
 
