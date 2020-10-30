@@ -40,6 +40,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewFuente = new System.Windows.Forms.DataGridView();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,7 +56,6 @@
             this.richTextBoxObj = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.richTextBoxErrores = new System.Windows.Forms.RichTextBox();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIntermedio)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -108,6 +108,7 @@
             // openFileProgram
             // 
             this.openFileProgram.FileName = "Programa";
+            this.openFileProgram.Filter = "(*.s) | *.s";
             // 
             // dataGridViewIntermedio
             // 
@@ -159,6 +160,12 @@
             this.Column5.HeaderText = "Direccion";
             this.Column5.Name = "Column5";
             this.Column5.Width = 77;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Error";
+            this.Column12.Name = "Column12";
+            this.Column12.Width = 54;
             // 
             // groupBox1
             // 
@@ -299,12 +306,6 @@
             this.richTextBoxErrores.Size = new System.Drawing.Size(360, 189);
             this.richTextBoxErrores.TabIndex = 0;
             this.richTextBoxErrores.Text = "";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Error";
-            this.Column12.Name = "Column12";
-            this.Column12.Width = 54;
             // 
             // SistemaInterprete
             // 

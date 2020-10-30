@@ -5,10 +5,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BB983493-1344-4A2D-8D16-F8405AB0B669}</ProjectGuid>
+    <ProjectGuid>{2DFB28A4-23A3-41CD-B2EC-ADE3B9FEA898}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Practica3</RootNamespace>
-    <AssemblyName>Practica3</AssemblyName>
+    <RootNamespace>Practica2</RootNamespace>
+    <AssemblyName>Practica2</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -61,11 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
     <Antlr4 Include="SICEstandar.g4">
       <Generator>MSBuild:Compile</Generator>
-      <CustomToolNamespace>Practica3</CustomToolNamespace>
+      <CustomToolNamespace>Practica2</CustomToolNamespace>
     </Antlr4>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

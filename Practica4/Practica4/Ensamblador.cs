@@ -143,42 +143,7 @@ namespace Practica4
                         {
                             this.TabSim.Add(codigo[0], this.cp);
                         }
-                        if (this.instrucciones.Keys.Contains(codigo[1]) || codigo[1].Equals("WORD"))
-                        {
-                            this.cp += 3;
-                        }
-                        else if (this.instrucciones.Keys.Contains(codigo[1]))
-                        {
-                            codigo[2] = codigo[2].ToUpper();
-                            switch (codigo[1])
-                            {
-                                case "BYTE":
-                                    if (codigo[2].Contains("X"))
-                                    {
-                                        cp += (long)Math.Ceiling((decimal)(codigo[2].Length - 3) / 2);
-                                    }
-                                    else if (codigo[2].Contains("C"))
-                                    {
-                                        cp += codigo[2].Length - 3;
-                                    }
-                                    break;
-                                case "RESW":
-                                    cp += 3 * long.Parse(codigo[2]);
-                                    break;
-                                case "RESB":
-                                    codigo[2] = codigo[2].ToUpper();
-                                    if (codigo[2].Contains("H"))
-                                    {
-                                        cp += MetodosAuxiliares.convierteDecimal(codigo[2].Replace("H", ""));
-                                    }
-                                    else
-                                    {
-                                        cp += long.Parse(codigo[2]);
-                                    }
-                                    break;
-                            }
-                        }
-
+                        this.incrementaInstruccionDirectiva(codigo);
                     }
                     else if (codigo[1].Equals("START"))
                     {
@@ -205,8 +170,9 @@ namespace Practica4
                     this.errores.Add("Linea" + (i + 1).ToString() + ": Error Simbolo repetido");
                     dataGridViewIntermedio.Rows.Remove(dataGridViewIntermedio.Rows[dataGridViewIntermedio.Rows.Count - 1]);
                     this.intermedio.Remove(this.intermedio.Last());
-                    this.intermedio.Add(this.cp.ToString()+"\t"+this.archivo[i]+"*");
+                    this.intermedio.Add(this.cp.ToString() + "\t" + this.archivo[i] + "*");
                     this.ensamblaIntermedio(dataGridViewIntermedio, codigo, i, "Simbolo");
+                    this.incrementaInstruccionDirectiva(codigo);
                 }
             }
             else
@@ -236,8 +202,47 @@ namespace Practica4
                 {
                     this.errores.Add("Linea" + (i + 1).ToString() + ": Error de sintaxis no debe haber lineas vacias");
                     this.intermedio.Add(this.cp.ToString() + "\t\t\t\t");
-                    codigo = new string[]{ " "," "," " };
+                    codigo = new string[] { " ", " ", " " };
                     this.ensamblaIntermedio(dataGridViewIntermedio, codigo, i, "Vacia");
+                }
+            }
+        }
+
+        private void incrementaInstruccionDirectiva(string[] codigo)
+        {
+            if (this.instrucciones.Keys.Contains(codigo[1]) || codigo[1].Equals("WORD"))
+            {
+                this.cp += 3;
+            }
+            else if (this.instrucciones.Keys.Contains(codigo[1]))
+            {
+                codigo[2] = codigo[2].ToUpper();
+                switch (codigo[1])
+                {
+                    case "BYTE":
+                        if (codigo[2].Contains("X"))
+                        {
+                            cp += (long)Math.Ceiling((decimal)(codigo[2].Length - 3) / 2);
+                        }
+                        else if (codigo[2].Contains("C"))
+                        {
+                            cp += codigo[2].Length - 3;
+                        }
+                        break;
+                    case "RESW":
+                        cp += 3 * long.Parse(codigo[2]);
+                        break;
+                    case "RESB":
+                        codigo[2] = codigo[2].ToUpper();
+                        if (codigo[2].Contains("H"))
+                        {
+                            cp += MetodosAuxiliares.convierteDecimal(codigo[2].Replace("H", ""));
+                        }
+                        else
+                        {
+                            cp += long.Parse(codigo[2]);
+                        }
+                        break;
                 }
             }
         }

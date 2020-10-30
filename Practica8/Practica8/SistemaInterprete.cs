@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Practica8;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Practica5
+namespace Practica6
 {
     public partial class SistemaInterprete : Form
     {
@@ -87,6 +88,7 @@ namespace Practica5
                     #endregion
                     break;
                 case "ArchivoObj":
+                    #region Archivo Obj
                     if (this.ensamblador != null)
                     {
                         if(this.ensamblador.Paso1Logrado)
@@ -104,6 +106,17 @@ namespace Practica5
                     {
                         MessageBox.Show("Por favor abra un archivo primero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
+                    #endregion
+                break;
+                case "Texto":
+                    EditorDeCodigo editor;
+                    editor = new EditorDeCodigo();
+                    editor.ShowDialog();
+                break;
+                case "EjecutaObj":
+                    Ejecucion ejecucion;
+                    ejecucion = new Ejecucion();
+                    ejecucion.ShowDialog();
                 break;
             }
         }

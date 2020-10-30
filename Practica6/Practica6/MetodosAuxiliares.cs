@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Practica5
+namespace Practica6
 {
     public class MetodosAuxiliares
     {
@@ -63,6 +63,20 @@ namespace Practica5
             }
         }
 
+        internal static void grabaArchivoSIC(string nombre, List<string> archivo)
+        {
+            string ruta;
+            StreamWriter writer;
+            ruta = Path.GetDirectoryName(nombre);
+            nombre = Path.GetFileNameWithoutExtension(nombre);
+            using (writer = new StreamWriter(new FileStream(ruta + @"\" + nombre + ".s", FileMode.Create)))
+            {
+                foreach (string linea in archivo)
+                {
+                    writer.WriteLine(linea);
+                }
+            }
+        }
 
         public static void grabaIntermedio(string nombre, List<string> intermedio)
         {

@@ -1,4 +1,4 @@
-﻿namespace Practica5
+﻿namespace Practica6
 {
     partial class SistemaInterprete
     {
@@ -35,6 +35,8 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTexto = new System.Windows.Forms.ToolStripButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.richTextBoxObj = new System.Windows.Forms.RichTextBox();
@@ -59,6 +61,8 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileProgram = new System.Windows.Forms.OpenFileDialog();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripEjecuta = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -75,7 +79,11 @@
             this.toolStripSeparator1,
             this.toolStripButton2,
             this.toolStripSeparator2,
-            this.toolStripButton3});
+            this.toolStripButton3,
+            this.toolStripSeparator3,
+            this.toolStripTexto,
+            this.toolStripSeparator4,
+            this.toolStripEjecuta});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1104, 37);
@@ -124,7 +132,23 @@
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(34, 34);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.Text = "Genera archivo obj";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 37);
+            // 
+            // toolStripTexto
+            // 
+            this.toolStripTexto.AccessibleName = "Texto";
+            this.toolStripTexto.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripTexto.Image = ((System.Drawing.Image)(resources.GetObject("toolStripTexto.Image")));
+            this.toolStripTexto.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripTexto.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripTexto.Name = "toolStripTexto";
+            this.toolStripTexto.Size = new System.Drawing.Size(23, 34);
+            this.toolStripTexto.Text = "Interfaz de Texto";
             // 
             // groupBox3
             // 
@@ -335,6 +359,22 @@
             this.openFileProgram.FileName = "openFileProgram";
             this.openFileProgram.Filter = "(*.s) | *.s";
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 37);
+            // 
+            // toolStripEjecuta
+            // 
+            this.toolStripEjecuta.AccessibleName = "EjecutaObj";
+            this.toolStripEjecuta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripEjecuta.Image = ((System.Drawing.Image)(resources.GetObject("toolStripEjecuta.Image")));
+            this.toolStripEjecuta.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripEjecuta.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripEjecuta.Name = "toolStripEjecuta";
+            this.toolStripEjecuta.Size = new System.Drawing.Size(23, 34);
+            this.toolStripEjecuta.Text = "toolStripButton5";
+            // 
             // SistemaInterprete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -345,7 +385,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "SistemaInterprete";
-            this.Text = "Form1";
+            this.Text = "Sistema Interprete";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -393,6 +433,10 @@
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton toolStripTexto;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton toolStripEjecuta;
     }
 }
 

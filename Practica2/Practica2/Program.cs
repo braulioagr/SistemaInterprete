@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Practica3
+namespace Practica2
 {
     class Program
     {
@@ -30,7 +30,7 @@ namespace Practica3
                     nombre = Console.ReadLine();
                     if (nombre.Contains(".s"))
                     {
-                        nombre = nombre.Replace(".s","");
+                        nombre = nombre.Replace(".s", "");
                     }
                     archivo = MetodosAuxiliares.leeArchivo(nombre);
                     outPutError = Console.Error;
@@ -63,7 +63,7 @@ namespace Practica3
                     }
                 }
             }
-            catch(FileNotFoundException)
+            catch (FileNotFoundException)
             {
                 Console.WriteLine("Ese archivo no existe");
             }

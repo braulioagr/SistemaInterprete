@@ -1,4 +1,5 @@
 ﻿using Antlr4.Runtime;
+using Practica6;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Practica5
+namespace Practica8
 {
     public class Ensamblador
     {
@@ -429,7 +430,7 @@ namespace Practica5
             this.archivoObj = new List<string>();
             instruccion = this.intermedio.First().Split('\t');
             linea = instruccion[3].Replace("H", "");
-            linea = instruccion[3].Replace("h", "");
+            linea = linea.Replace("h", "");
             linea = "H" + MetodosAuxiliares.ajustaCadena(instruccion[1], 6) + this.ajustaDireccion(linea) +
                           this.ajustaDireccion(MetodosAuxiliares.decimalAHexadecimal(this.tamaño));
             this.archivoObj.Add(linea);

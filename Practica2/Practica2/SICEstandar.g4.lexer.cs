@@ -1,4 +1,4 @@
-﻿namespace Practica3
+﻿namespace Practica2
 {
     partial class SICEstandarLexer
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Practica3
+namespace Practica2
 {
     class MetodosAuxiliares
     {
@@ -49,7 +49,7 @@ namespace Practica3
                 }
                 File.Delete(Directory.GetCurrentDirectory() + @"\tmp.s");
             }
-            catch(FileNotFoundException)
+            catch (FileNotFoundException)
             {
                 Console.Write("Error");
             }
