@@ -32,13 +32,6 @@ namespace Practica6
             return archivo;
         }
 
-        public static long calculaTamañoMemoria(string v)
-        {
-            string tamaño;
-            tamaño = v.Substring(13, 6);
-            return (MetodosAuxiliares.hexadecimalADecimal(tamaño)/16);
-        }
-
         public static void grabaErrores(string nombre, List<string> errores)
         {
             string ruta;
@@ -70,7 +63,7 @@ namespace Practica6
             }
         }
 
-        internal static void grabaArchivoSIC(string nombre, List<string> archivo)
+        public static void grabaArchivoSIC(string nombre, List<string> archivo)
         {
             string ruta;
             StreamWriter writer;
@@ -100,7 +93,7 @@ namespace Practica6
                 }
             }
         }
-
+        
         public static void grabaObj(string nombre, List<string> archivoObj)
         {
             string ruta;
@@ -308,5 +301,27 @@ namespace Practica6
             return cadena;
         }
 
+
+        public static long calculaTamañoMemoria(string v)
+        {
+            string tamaño;
+            tamaño = v.Substring(13, 6);
+            return (MetodosAuxiliares.hexadecimalADecimal(tamaño) / 16)+1;
+        }
+
+        public static long CalculaFilaMemoria(string direccioInicio, string inicio, long filas)
+        {
+            long indice;
+            indice = -1;
+            for (long i = 0; i < filas; i++)
+            {
+                if (MetodosAuxiliares.hexadecimalADecimal(direccioInicio) == (MetodosAuxiliares.hexadecimalADecimal(inicio) + (i * 16)))
+                {
+                    indice = i;
+                    break;
+                }
+            }
+            return indice;
+        }
     }
 }

@@ -258,7 +258,6 @@
             this.Controls.Add(this.toolStripMapa);
             this.Name = "Ejecucion";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Ejecucion_Load);
             this.toolStripMapa.ResumeLayout(false);
             this.toolStripMapa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMapaDeMemoria)).EndInit();
