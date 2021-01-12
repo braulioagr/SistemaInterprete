@@ -37,10 +37,11 @@ namespace Practica8
         private void limpiaDatagrid()
         {
             this.dataGridViewMapaDeMemoria.Rows.Clear();
+            this.dataGridViewRegistros.Rows.Clear();
         }
         private void llenaDataGrid()
         {
-            this.dataGridViewMapaDeMemoria.Rows.Clear();
+            this.limpiaDatagrid();
             string[] fila;
             fila = new string[17];
             for (int i = 0; i < sicEstandar.Memoria.Filas; i++)
@@ -52,6 +53,18 @@ namespace Practica8
                 }
                 this.dataGridViewMapaDeMemoria.Rows.Add(fila);
             }
+            this.dataGridViewRegistros.Rows.Add("CP", MetodosAuxiliares.ajustaDireccion(MetodosAuxiliares.decimalAHexadecimal(this.sicEstandar.CP)), "");
+            this.dataGridViewRegistros.Rows.Add("A", MetodosAuxiliares.decimalAHexadecimal(this.sicEstandar.A), "");
+            this.dataGridViewRegistros.Rows.Add("X", MetodosAuxiliares.decimalAHexadecimal(this.sicEstandar.X), "");
+            this.dataGridViewRegistros.Rows.Add("L", MetodosAuxiliares.decimalAHexadecimal(this.sicEstandar.L), "");
+            this.dataGridViewRegistros.Rows.Add("CC", this.sicEstandar.CC, "");
+            this.label1.Text = "Tamaño del programa:" + this.sicEstandar.Memoria.Tamaño;
         }
+
+        private void Ejecucion_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

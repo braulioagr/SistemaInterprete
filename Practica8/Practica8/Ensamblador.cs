@@ -431,8 +431,8 @@ namespace Practica8
             instruccion = this.intermedio.First().Split('\t');
             linea = instruccion[3].Replace("H", "");
             linea = linea.Replace("h", "");
-            linea = "H" + MetodosAuxiliares.ajustaCadena(instruccion[1], 6) + this.ajustaDireccion(linea) +
-                          this.ajustaDireccion(MetodosAuxiliares.decimalAHexadecimal(this.tamaño));
+            linea = "H" + MetodosAuxiliares.ajustaCadena(instruccion[1], 6) + MetodosAuxiliares.ajustaDireccion(linea) +
+                          MetodosAuxiliares.ajustaDireccion(MetodosAuxiliares.decimalAHexadecimal(this.tamaño));
             this.archivoObj.Add(linea);
             this.generaRegistrosT();
             instruccion = this.intermedio.Last().Split('\t');
@@ -452,7 +452,7 @@ namespace Practica8
             i = 1;
             while (!this.archivo[i].Contains("END"))
             {
-                registroT = "T" + this.ajustaDireccion(this.intermedio[i].Split('\t').First());
+                registroT = "T" + MetodosAuxiliares.ajustaDireccion(this.intermedio[i].Split('\t').First());
                 for(j = i ; j < this.codigoObj.Length-1 ; j++)
                 {
                     if (!this.codigoObj[j].Contains("Error"))
@@ -517,7 +517,7 @@ namespace Practica8
                         }
                     }
                 }
-                inicio = this.ajustaDireccion(inicio);
+                inicio = MetodosAuxiliares.ajustaDireccion(inicio);
             }
             catch (KeyNotFoundException)
             {
@@ -526,20 +526,6 @@ namespace Practica8
             return inicio;
         }
 
-        private string ajustaDireccion(string direccion)
-        {
-            if (direccion.Length < 6)
-            {
-                string ceros;
-                ceros = "";
-                for (int i = 0; i < 6 - direccion.Length; i++)
-                {
-                    ceros += "0";
-                }
-                direccion = ceros + direccion;
-            }
-            return direccion;
-        }
 
 
         #endregion

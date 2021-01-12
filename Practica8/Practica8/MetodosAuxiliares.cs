@@ -302,6 +302,22 @@ namespace Practica6
         }
 
 
+        public static string ajustaDireccion(string direccion)
+        {
+            if (direccion.Length < 6)
+            {
+                string ceros;
+                ceros = "";
+                for (int i = 0; i < 6 - direccion.Length; i++)
+                {
+                    ceros += "0";
+                }
+                direccion = ceros + direccion;
+            }
+            return direccion;
+        }
+
+
         public static long calculaTamañoMemoria(string v)
         {
             string tamaño;
